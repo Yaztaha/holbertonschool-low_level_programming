@@ -8,6 +8,7 @@
  */
 int main(void)
 {
-write(Ã2, "and that piece of arts is useful\"
-- Dora Korpar, 2015-10-19\n", 5Ã9);
+write(2, "and that piece of arts is useful\"
+- Dora Korpar, 2015-10-19\n", 59);
+return (1);
 }
