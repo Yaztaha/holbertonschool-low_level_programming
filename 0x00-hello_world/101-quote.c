@@ -1,13 +1,15 @@
-#include <stdio.h>
-#include <unistd.h>
+#include "stdio.h"
+#include "string.h"
+#include "unistd.h"
 /**
- * main
+ * main - Entry point
  *
- * Return: Always 1
+ * Return: Always 0 (vrai)
  */
 int main(void)
 {
-write(2, "and that piece of arts is useful\"
-- Dora Korpar, 2015-10-19\n", 58);
+int len;
+len = strlen("and that piece of art is useful\" - Dora Korpar, 2015-10-19\n");
+write(2, "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n", len);
 return (1);
 }
