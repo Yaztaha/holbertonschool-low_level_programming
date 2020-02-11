@@ -11,8 +11,8 @@ for (x = 0; x < 10; x++)
 {
 for (y = 0; y < 10; y++)
 {
-int time = x * y;
-if (time < 10)
+int times = x * y;
+if (times < 10)
 {
 if (y > 0)
 {
