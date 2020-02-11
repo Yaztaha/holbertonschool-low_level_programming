@@ -1,1 +1,1 @@
-y
+int _putchar(char c);
