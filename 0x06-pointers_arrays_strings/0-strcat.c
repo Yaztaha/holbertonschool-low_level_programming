@@ -1,19 +1,23 @@
 #include "holberton.h"
 /**
- *
- *
- *
+ * _strcat - copy src to dest.
+ * @dest: first string.
+ * @src: second string.
+ * Return: dest.
  */
 char *_strcat(char *dest, char *src)
 {
-	while(*dest)
-		dest++;
-	while(*src)
+	int i, j;
+
+	i = 0;
+	while (dest[i] != '\0')
 	{
-		*dest = *src;
-		src++;
-		dest++;
+		i++;
 	}
-	*dest = '\0';
-	return 0;
+	for (j = 0; src[j] != '\0'; i++, j++)
+	{
+		dest[i] = src[j];
+	}
+	dest[i] = '\0';
+	return (dest);
 }
