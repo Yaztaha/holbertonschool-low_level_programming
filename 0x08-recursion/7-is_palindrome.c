@@ -2,7 +2,6 @@
 /**
  * _strlen_recursion - string length.
  * @s: string.
- *
  * Return: string l.
  */
 int _strlen_recursion(char *s)
@@ -16,6 +15,7 @@ int _strlen_recursion(char *s)
  * @s: pointer.
  * @a: value a.
  * @b: value b.
+ * Return: 1.
  */
 int pal(char *s, int a, int b)
 {
