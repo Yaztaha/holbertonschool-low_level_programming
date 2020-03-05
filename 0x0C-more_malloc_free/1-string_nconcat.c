@@ -7,20 +7,15 @@
  * @n: number of bytes.
  * Return: concatenated string.
  */
-
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *p;
 	unsigned int a = 0, b = 0;
 
 	if (s1 == NULL)
-	{
 		s1 = "";
-	}
 	if (s2 == NULL)
-	{
 		s2 = "";
-	}
 
 	while (s2[b] != '\0')
 	{
@@ -31,9 +26,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		a++;
 	}
 	if (n >= b)
-	{
 		n = b;
-	}
 	p = malloc(sizeof(char) * (a + n) + 1);
 	if (p != NULL)
 	{
