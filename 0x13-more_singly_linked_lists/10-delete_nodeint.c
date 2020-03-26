@@ -19,7 +19,7 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 		return (1);
 	}
 	node_tmp = *head;
-	while (--index && tmp)
+	while (--index && node_tmp)
 		node_tmp = node_tmp->next;
 	if (!node_tmp)
 		return (-1);
