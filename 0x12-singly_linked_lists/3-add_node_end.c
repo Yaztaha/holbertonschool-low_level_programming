@@ -11,7 +11,7 @@ int str_len(const char *s)
 	while (s[count] != '\0')
 		count++;
 	return (count);
-}}
+}
 /**
  * add_node_end - adds a new node to the end of linked list
  * @head: pointer to pointer of the first node of linked list
@@ -25,7 +25,7 @@ list_t *add_node_end(list_t **head, const char *str)
 	if (temp == NULL)
 		return (NULL);
 	temp->str = strdup(str);
-	temp->len = strLength(str);
+	temp->len = str_len(str);
 	temp->next = NULL;
 
 	if (*head == NULL)
