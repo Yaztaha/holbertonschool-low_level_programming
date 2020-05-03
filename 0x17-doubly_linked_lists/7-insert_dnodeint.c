@@ -2,36 +2,44 @@
 
 /**
  * insert_dnodeint_at_idx - insert a new node at given position.
- * @h: head double pointer.
+ * @head: head double pointer.
  * @idx: index.
  * @n: value to store.
  * Return: ddress of new node, or NULL if failed.
  */
 
-dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
+dlistint_t *insert_dnodeint_at_idx(dlistint_t **head, unsigned int idx, int n)
 {
-	unsigned int count;
-	dlistint_t *current;
-	dlistint_t *new;
+	dlistint_t *new_node, *temp;
+	unsigned int i;
 
-	if (h == NULL)
+	if (*head == NULL && idx != 0)
 		return (NULL);
-	if ((*h == NULL && idx == 0) || idx == 0)/*empty but insert at 0*/
-		return (add_dnodeint(h, n));
-	if (*h == NULL && idx != 0)/*empty list w/ impossible idx*/
+
+	new_node = malloc(sizeof(dlistint_t));
+	if (new_node == NULL)
 		return (NULL);
-	current = *h;
-	for (count = 0; count < idx && current != NULL; count++)
-		current = current->next;/*take me to end or correct position*/
-	if (count < idx)/*if idx is an illegal position*/
+	new_node->n = n;
+
+	if (idx == 0)
+	{
+		new_node->next = *head;
+		*head = new_node;
+		return (new_node);
+	}
+	i = 0;
+	temp = *head;
+	while (i < (idx - 1) && temp != NULL)
+	{
+		i++;
+		temp = temp->next;
+	}
+	if (i != (idx - 1))
+	{
+		free(new_node);
 		return (NULL);
-	if (count == idx && current == NULL)/*if count is at the end of the list*/
-		return (add_dnodeint_end(h, n));
-	new = malloc(sizeof(dlistint_t));
-	new->n = n;
-	new->next = current;
-	new->prev = current->prev;
-	current->prev->next = new;
-	current->prev = new;
-	return (new);
+	}
+	new_node->next = temp->next;
+	temp->next = new_node;
+	return (new_node);
 }
