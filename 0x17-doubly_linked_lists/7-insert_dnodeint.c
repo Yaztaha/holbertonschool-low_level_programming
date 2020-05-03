@@ -8,46 +8,30 @@
  * Return: ddress of new node, or NULL if failed.
  */
 
-dlistint_t *insert_dnodeint_at_idx(dlistint_t **h, unsigned int idx, int n)
+dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	unsigned int c;
-	dlistint_t *tmp, *prev, *new;
+	unsigned int count;
+	dlistint_t *current;
+	dlistint_t *new;
 
-	new = malloc(sizeof(dlistint_t));
-	if (new == NULL)
+	if (h == NULL)
 		return (NULL);
+	if ((*h == NULL && idx == 0) || idx == 0)/*empty but insert at 0*/
+		return (add_dnodeint(h, n));
+	if (*h == NULL && idx != 0)/*empty list w/ impossible idx*/
+		return (NULL);
+	current = *h;
+	for (count = 0; count < idx && current != NULL; count++)
+		current = current->next;/*take me to end or correct position*/
+	if (count < idx)/*if idx is an illegal position*/
+		return (NULL);
+	if (count == idx && current == NULL)/*if count is at the end of the list*/
+		return (add_dnodeint_end(h, n));
+	new = malloc(sizeof(dlistint_t));
 	new->n = n;
-	for (tmp = *h, c = 1; tmp && c < idx; c++, tmp = tmp->next)
-		prev = tmp;
-	if (idx == 0)
-	{
-		*h = new; new->prev = NULL;
-		new->next = (tmp == NULL) ? NULL : tmp;
-		return (new);
-	}
-	if (idx == 1)
-	{
-		prev = *h;
-		tmp = ((*h)->next == NULL) ? NULL : (*h)->next;
-		new->prev = prev; new->next = tmp; prev->next = new;
-		if (tmp)
-			tmp->prev = new;
-		return (new);
-	}
-	if (idx == c && tmp == NULL)
-	{
-		if (prev != NULL)
-		{
-			new->prev = prev; new->next = NULL;
-			prev->next = new; return (new);
-		}
-		free(new); return (NULL);
-	}
-	else if (idx != c && tmp == NULL)
-	{
-		free(new); return (NULL);
-	}
-	prev = tmp; tmp = tmp->next; new->prev = prev;
-	new->next = tmp; prev->next = new; tmp->prev = new;
+	new->next = current;
+	new->prev = current->prev;
+	current->prev->next = new;
+	current->prev = new;
 	return (new);
 }
