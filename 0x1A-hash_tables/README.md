@@ -37,7 +37,7 @@ Werror` `-Wextra` `and` `-pedantic`
 
 Please use these data structures for this project:
 
-````html
+```html
 /**
  * struct hash_node_s - Node of a hash table
  *
