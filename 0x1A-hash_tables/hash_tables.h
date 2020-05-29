@@ -1,6 +1,12 @@
 #ifndef HASH_TABLES_H
 #define HASH_TABLES_H
 
+/*** Libraries ***/
+
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+
 /*** Hash table data structure ***/
 
 /**
